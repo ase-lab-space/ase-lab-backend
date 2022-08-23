@@ -3,24 +3,19 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 
 	"github.com/ase-lab-space/ase-lab-backend/config"
+	"github.com/ase-lab-space/ase-lab-backend/router"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
-
 	cfg, err := config.New(".env")
 	if err != nil {
 		log.Fatal(err)
 	}
+	gin.SetMode(cfg.GIN_MODE)
 
+	r := router.New()
 	r.Run(fmt.Sprintf(":%d", cfg.PORT))
 }

@@ -8,7 +8,8 @@ import (
 )
 
 type Config struct {
-	PORT int
+	PORT     int
+	GIN_MODE string
 }
 
 func New(filename string) (*Config, error) {
@@ -20,6 +21,7 @@ func New(filename string) (*Config, error) {
 	}
 
 	return &Config{
-		PORT: PORT,
+		PORT:     PORT,
+		GIN_MODE: os.Getenv("GIN_MODE"),
 	}, nil
 }
