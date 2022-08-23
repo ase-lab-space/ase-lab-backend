@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"log"
 	"net/http"
 
+	"github.com/ase-lab-space/ase-lab-backend/config"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,5 +17,10 @@ func main() {
 		})
 	})
 
-	r.Run(":18080")
+	cfg, err := config.New(".env")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	r.Run(fmt.Sprintf(":%d", cfg.PORT))
 }
