@@ -8,8 +8,9 @@ import (
 )
 
 type Config struct {
-	PORT     int
-	GIN_MODE string
+	PORT                                  int
+	GIN_MODE                              string
+	CONTACT_FORM_NOTIFICATOR_ACCESS_TOKEN string
 }
 
 func New(filename string) (*Config, error) {
@@ -21,7 +22,8 @@ func New(filename string) (*Config, error) {
 	}
 
 	return &Config{
-		PORT:     PORT,
-		GIN_MODE: os.Getenv("GIN_MODE"),
+		PORT:                                  PORT,
+		GIN_MODE:                              os.Getenv("GIN_MODE"),
+		CONTACT_FORM_NOTIFICATOR_ACCESS_TOKEN: os.Getenv("CONTACT_FORM_NOTIFICATOR_ACCESS_TOKEN"),
 	}, nil
 }

@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/ase-lab-space/ase-lab-backend/config"
-	"github.com/ase-lab-space/ase-lab-backend/router"
+	"github.com/ase-lab-space/ase-lab-backend/routers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +16,6 @@ func main() {
 	}
 	gin.SetMode(cfg.GIN_MODE)
 
-	r := router.New()
+	r := routers.New(cfg)
 	r.Run(fmt.Sprintf(":%d", cfg.PORT))
 }

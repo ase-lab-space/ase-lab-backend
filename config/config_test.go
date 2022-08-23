@@ -1,23 +1,25 @@
-package config_test
+package config
 
 import (
 	"testing"
-
-	"github.com/ase-lab-space/ase-lab-backend/config"
 )
 
 func TestNew(t *testing.T) {
-	cfg, err := config.New(".env.test")
+	cfg, err := New(".env.test")
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
 	if cfg.PORT != 1234 {
-		t.Fatalf("wrong PORT: expected %d, got %d", 1234, cfg.PORT)
+		t.Errorf("wrong PORT: expected %d, got %d", 1234, cfg.PORT)
 	}
 
 	if cfg.GIN_MODE != "test" {
-		t.Fatalf("wrong GIN_MODE: expected %s, got %s", "test", cfg.GIN_MODE)
+		t.Errorf("wrong GIN_MODE: expected %s, got %s", "test", cfg.GIN_MODE)
+	}
+
+	if cfg.CONTACT_FORM_NOTIFICATOR_ACCESS_TOKEN != "accesstoken" {
+		t.Fatalf("wrong CONTACT_FORM_NOTIFICATOR_ACCESS_TOKEN: expected accesstoken, got %s", cfg.CONTACT_FORM_NOTIFICATOR_ACCESS_TOKEN)
 	}
 }
