@@ -27,8 +27,12 @@ func NewRoutes(engine *gin.Engine, cfg *config.Config) Routes {
 	slackController := controllers.NewSlackController(slackService)
 	slackRoute := NewSlackRoute(engine, slackController)
 
+	// HealthRoute
+	healthRoute := NewHealthRoute(engine)
+
 	return Routes{
 		slackRoute,
+		healthRoute,
 	}
 }
 

@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  app:
+    image: ase-lab-backend
+    build:
+      args:
+        - target=deploy
+    volumes:
+      - .:/app
+    ports:
+      - "18080:18080"

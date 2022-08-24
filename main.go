@@ -10,12 +10,15 @@ import (
 )
 
 func main() {
-	cfg, err := config.New(".env")
+	envFile := ".env"
+	log.Printf("Loading %s", envFile)
+	cfg, err := config.New(envFile)
 	if err != nil {
 		log.Fatal(err)
 	}
 	gin.SetMode(cfg.GIN_MODE)
 
 	r := routers.New(cfg)
+	log.Printf("Running on %d", cfg.PORT)
 	r.Run(fmt.Sprintf(":%d", cfg.PORT))
 }

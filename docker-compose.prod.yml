@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  app:
+    image: aselab/ase-lab-backend:latest
+    build:
+      args:
+        - target=deploy
+    volumes:
+      - type: bind
+        source: "./.env"
+        target: "/.env"
+    ports:
+      - "18080:18080"
