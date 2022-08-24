@@ -21,7 +21,7 @@ type SlackRepository struct {
 
 func (s *SlackRepository) SendMessage(channel repositories.Channel, body string) error {
 	api := NewSlackApi(s.cfg.CONTACT_FORM_NOTIFICATOR_ACCESS_TOKEN)
-	_, _, err := api.PostMessage(string(channel), slack.MsgOptionText(body, true))
+	_, _, err := api.PostMessage(string(channel), slack.MsgOptionText(body, false))
 	if err != nil {
 		return err
 	}
