@@ -13,7 +13,7 @@ build: ## Build docker image to local development
 
 .PHONY: up-prod
 up-prod: ## Do docker compose up with production
-	docker compose -f docker-compose.prod.yml up
+	docker compose -d -f docker-compose.prod.yml up
 
 .PHONY: up
 up: ## Do docker compose up with hot reload
