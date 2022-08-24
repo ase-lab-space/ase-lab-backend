@@ -35,12 +35,3 @@ func NewRoutes(engine *gin.Engine, cfg *config.Config) Routes {
 		healthRoute,
 	}
 }
-
-func New(cfg *config.Config) *gin.Engine {
-	engine := gin.Default()
-
-	routes := NewRoutes(engine, cfg)
-	routes.Setup()
-
-	return engine
-}
