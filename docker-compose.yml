@@ -5,7 +5,7 @@ services:
     image: ase-lab-backend
     build:
       args:
-        - target=deploy
+        - target=dev
     volumes:
       - .:/app
     ports:

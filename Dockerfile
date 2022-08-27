@@ -12,7 +12,8 @@ RUN go build -trimpath -ldflags "-w -s" -o app
 # deploy
 FROM debian:bullseye-slim as deploy
 
-RUN apt-get update
+RUN apt-get update \
+      && apt-get -y install ca-certificates
 
 COPY --from=deploy-builder /app/app .
 
